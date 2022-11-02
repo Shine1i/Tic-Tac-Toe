@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Cyberway";
+  src: url(./fonts/CyberwayRiders.ttf);
+}
+@layer components {
+  .box-component {
+    @apply border-accent-focus text-success shadow-primary flex items-center justify-center border-solid text-9xl shadow-xl;
+  }
+}

@@ -6,8 +6,9 @@ module.exports = {
     extend: {
       fontFamily: {
         "press-start": ['"Press Start 2P"', "cursive"],
+        Cyberway: ["Cyberway"],
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };
