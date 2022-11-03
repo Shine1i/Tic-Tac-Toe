@@ -1,5 +1,5 @@
 const gameBoard = (() => {
-  let state = ["x", "o", "x", "x", "o", "o", "o", "o", "o"];
+  let state = ["", "", "", "", "", "", "", "", ""];
   const board = () => {
     document.getElementById("board").style.display = "grid";
     const boxes = document.querySelectorAll("#box");
@@ -32,20 +32,47 @@ const Player = (marker) => {
   let playerOne = {
     marker: marker,
   };
+
+  const boxes = document.querySelectorAll("#box");
+  let box = Array.from(boxes);
   //TODO: tie marker to array and display array value on box
   const move = () => {
-    const boxes = document.querySelectorAll("#box");
     for (let i = 0; i < boxes.length; i++) {
       boxes[i].addEventListener("click", () => {
         gameBoard.state[i] = playerOne.marker;
         boxes[i].innerHTML = playerOne.marker;
-        console.log("test");
+        // console.log("test");
+        isWinner();
       });
     }
   };
+
   return {
     move,
+    playerOne,
   };
 };
 const wasim = Player("x");
 wasim.move();
+
+const isWinner = () => {
+  const winners = [
+    [0, 1, 2],
+    [0, 3, 6],
+    [3, 4, 5],
+    [6, 7, 8],
+    [1, 4, 7],
+    [2, 4, 6],
+    [2, 5, 8],
+    [0, 4, 8],
+  ];
+  return winners.find(function (winner) {
+    if (
+      gameBoard.state[winner[0]] === wasim.playerOne.marker &&
+      gameBoard.state[winner[1]] === wasim.playerOne.marker &&
+      gameBoard.state[winner[2]] === wasim.playerOne.marker
+    ) {
+      alert("win");
+    }
+  });
+};
