@@ -1,5 +1,5 @@
 const gameBoard = (() => {
-  let state = ["", "", "", "", "", "", "", "", ""];
+  let state = ["x", "x", "", "", "", "", "", "", ""];
   const board = () => {
     document.getElementById("board").style.display = "grid";
     const boxes = document.querySelectorAll("#box");
@@ -19,7 +19,8 @@ const displayController = (() => {
     const startBtn = document.querySelector("#startBtn");
     startBtn.addEventListener("click", () => {
       document.querySelector("#startPage").style.display = "none";
-      gameBoard.board();
+      // gameBoard.board();
+      document.querySelector("#markers").style.display = "grid";
     });
   };
   return {

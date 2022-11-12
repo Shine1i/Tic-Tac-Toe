@@ -9,7 +9,7 @@
     <title>Tic Tac Toe</title>
   </head>
   <body onload="displayController.startPage();">
-    <div class="hero bg-base-200 min-h-screen">
+    <div class="hero min-h-screen bg-base-100">
       <div class="hero-content text-center" id="startPage">
         <div class="max-w-md">
           <h1
@@ -21,7 +21,7 @@
             How many times have you played this on last page of your notebook
             while attending class im here to bring those memories back.
           </p>
-          <button class="btn btn-primary" id="startBtn">Let's Play</button>
+          <button class="btn-primary btn" id="startBtn">Let's Play</button>
         </div>
       </div>
       <!-- board display -->
@@ -39,6 +39,31 @@
         <div class="box-component border-r-4" id="box"></div>
         <div class="box-component border-r-4" id="box"></div>
         <div class="box-component" id="box"></div>
+      </div>
+      <div
+        class="hidden h-full w-full items-center justify-center bg-base-100"
+        id="markers"
+      >
+        <img src="./src/test.gif" alt="marker text" class="m-auto" />
+        <div class="card rounded-box grid h-40 flex-grow place-items-center">
+          <p
+            class="w-32 animate-bounce cursor-pointer text-center font-Cyberway text-8xl text-primary hover:text-success"
+          >
+            X
+          </p>
+        </div>
+        <div
+          class="divider divider-vertical w-screen animate-pulse font-Cyberway text-6xl text-accent-focus"
+        >
+          OR
+        </div>
+        <div class="card rounded-box grid h-40 flex-grow place-items-center">
+          <p
+            class="w-32 animate-bounce cursor-pointer text-center font-Cyberway text-8xl text-secondary hover:text-success"
+          >
+            O
+          </p>
+        </div>
       </div>
     </div>
   </body>
