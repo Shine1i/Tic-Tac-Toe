@@ -2,11 +2,6 @@ const gameBoard = (() => {
   let state = ["", "", "", "", "", "", "", "", ""];
   const board = () => {
     document.getElementById("board").style.display = "grid";
-    const boxes = document.querySelectorAll("#box");
-    for (let i = 0; i < boxes.length; i++) {
-      boxes[i].innerHTML = state[i];
-      boxes[i].setAttribute("id", i);
-    }
   };
 
   return {
@@ -19,7 +14,6 @@ const displayController = (() => {
     const startBtn = document.querySelector("#startBtn");
     startBtn.addEventListener("click", () => {
       document.querySelector("#startPage").style.display = "none";
-      // gameBoard.board();
       document.querySelector("#markers").style.display = "grid";
     });
   };
@@ -28,7 +22,6 @@ const displayController = (() => {
   };
 })();
 // player factory functions
-// TODO: Build the functions that allow players to add marks to a specific spot on the board, and then tie it to the DOM, letting players click on the gameboard to place their marker.
 const Player = (marker) => {
   let playerOne = {
     marker: marker,
@@ -75,9 +68,7 @@ const Player = (marker) => {
     markers,
   };
 };
-const wasim = Player();
-wasim.markers();
-wasim.move();
+
 const isWinner = () => {
   const winners = [
     [0, 1, 2],
@@ -91,11 +82,12 @@ const isWinner = () => {
   ];
   return winners.find(function (winner) {
     if (
-      gameBoard.state[winner[0]] === wasim.playerOne.marker &&
-      gameBoard.state[winner[1]] === wasim.playerOne.marker &&
-      gameBoard.state[winner[2]] === wasim.playerOne.marker
+      gameBoard.state[winner[0]] === player.playerOne.marker &&
+      gameBoard.state[winner[1]] === player.playerOne.marker &&
+      gameBoard.state[winner[2]] === player.playerOne.marker
     ) {
       alert("win");
+      console.log(winner);
     }
     // check for draw
     if (
@@ -113,3 +105,6 @@ const isWinner = () => {
     }
   });
 };
+const player = Player();
+player.markers();
+player.move();
