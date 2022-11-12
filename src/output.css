@@ -2317,6 +2317,10 @@ html {
   height: 15rem;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
