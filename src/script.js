@@ -1,5 +1,5 @@
 const gameBoard = (() => {
-  let state = ["x", "x", "", "", "", "", "", "", ""];
+  let state = ["", "", "", "", "", "", "", "", ""];
   const board = () => {
     document.getElementById("board").style.display = "grid";
     const boxes = document.querySelectorAll("#box");
@@ -33,7 +33,20 @@ const Player = (marker) => {
   let playerOne = {
     marker: marker,
   };
-
+  const markers = () => {
+    const x = document.querySelector("#xBtn");
+    const o = document.querySelector("#oBtn");
+    x.addEventListener("click", () => {
+      playerOne.marker = "x";
+      gameBoard.board();
+      document.querySelector("#markers").style.display = "none";
+    });
+    o.addEventListener("click", () => {
+      playerOne.marker = "o";
+      gameBoard.board();
+      document.querySelector("#markers").style.display = "none";
+    });
+  };
   const boxes = document.querySelectorAll("#box");
   let box = Array.from(boxes);
   //TODO: tie marker to array and display array value on box
@@ -42,20 +55,29 @@ const Player = (marker) => {
       boxes[i].addEventListener("click", () => {
         gameBoard.state[i] = playerOne.marker;
         boxes[i].innerHTML = playerOne.marker;
+        boxes[i].style.pointerEvents = "none";
         // console.log("test");
         isWinner();
+        turn();
       });
     }
   };
-
+  const turn = () => {
+    if (playerOne.marker === "x") {
+      playerOne.marker = "o";
+    } else {
+      playerOne.marker = "x";
+    }
+  };
   return {
     move,
     playerOne,
+    markers,
   };
 };
-const wasim = Player("x");
+const wasim = Player();
+wasim.markers();
 wasim.move();
-
 const isWinner = () => {
   const winners = [
     [0, 1, 2],
@@ -74,6 +96,20 @@ const isWinner = () => {
       gameBoard.state[winner[2]] === wasim.playerOne.marker
     ) {
       alert("win");
+    }
+    // check for draw
+    if (
+      gameBoard.state[0] !== "" &&
+      gameBoard.state[1] !== "" &&
+      gameBoard.state[2] !== "" &&
+      gameBoard.state[3] !== "" &&
+      gameBoard.state[4] !== "" &&
+      gameBoard.state[5] !== "" &&
+      gameBoard.state[6] !== "" &&
+      gameBoard.state[7] !== "" &&
+      gameBoard.state[8] !== ""
+    ) {
+      alert("draw");
     }
   });
 };
