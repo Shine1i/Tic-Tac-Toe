@@ -10,7 +10,7 @@
   </head>
   <body onload="displayController.startPage();">
     <div class="hero min-h-screen bg-base-100">
-      <div class="hero-content text-center" id="startPage" style="display: ">
+      <div class="hero-content text-center" id="startPage">
         <div class="max-w-md">
           <h1
             class="font-Cyberway text-7xl font-bold tracking-widest lg:text-[5.4rem]"
@@ -65,6 +65,17 @@
           >
             <p class="animate-pulse text-center">O</p>
           </button>
+        </div>
+      </div>
+      <div class="bg-amber-50 w-full h-full opacity-60 flex justify-center items-center" id="menu" style="display: none" >
+        <div class="w-[25rem] h-max border-4 border-primary bg-base-100 opacity-100 flex rounded-2xl flex-col">
+          <button class="btn glass w-full warning rounded-2xl h-24 bg-info text-4xl hover:text-success" id="reset">Reset</button>
+          <div
+            class="divider bg-error"
+          >
+
+          </div>
+          <button class="btn glass w-full text-warning rounded-2xl h-24 bg-info text-4xl hover:text-success" id="restart">Restart</button>
         </div>
       </div>
     </div>
