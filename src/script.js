@@ -1,3 +1,4 @@
+// TODO: proper menu with reset and restart functions
 const gameBoard = (() => {
   let state = ["", "", "", "", "", "", "", "", ""];
   const board = () => {
