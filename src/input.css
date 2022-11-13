@@ -10,4 +10,7 @@
   .box-component {
     @apply border-accent-focus text-success shadow-primary flex items-center justify-center border-solid text-9xl shadow-xl;
   }
+  .box-win{
+    @apply bg-success animate-pulse
+  }
 }

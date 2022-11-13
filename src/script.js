@@ -1,3 +1,4 @@
+// TODO: proper menu with reset and restart functions
 const gameBoard = (() => {
   let state = ["", "", "", "", "", "", "", "", ""];
   const board = () => {
@@ -41,7 +42,6 @@ const Player = (marker) => {
     });
   };
   const boxes = document.querySelectorAll("#box");
-  let box = Array.from(boxes);
   //TODO: tie marker to array and display array value on box
   const move = () => {
     for (let i = 0; i < boxes.length; i++) {
@@ -52,6 +52,11 @@ const Player = (marker) => {
         // console.log("test");
         isWinner();
         turn();
+        if (playerOne.marker === 'o'){
+          boxes[i].style.color = '#C17FEC';
+        }else{
+          boxes[i].style.color = '#74D1F1';
+        }
       });
     }
   };
@@ -86,8 +91,16 @@ const isWinner = () => {
       gameBoard.state[winner[1]] === player.playerOne.marker &&
       gameBoard.state[winner[2]] === player.playerOne.marker
     ) {
-      alert("win");
-      console.log(winner);
+
+      const boxes = document.querySelectorAll("#box");
+      for (let i = 0; i < boxes.length; i++) {
+        boxes[i].setAttribute("id", i);
+        boxes[winner[0]].classList.add("box-win")
+        boxes[winner[1]].classList.add("box-win")
+        boxes[winner[2]].classList.add("box-win")
+        boxes[i].style.pointerEvents = "none";
+      }
+
     }
     // check for draw
     if (
@@ -101,7 +114,12 @@ const isWinner = () => {
       gameBoard.state[7] !== "" &&
       gameBoard.state[8] !== ""
     ) {
-      alert("draw");
+      const boxes = document.querySelectorAll("#box");
+      for (let i = 0; i < boxes.length; i++) {
+        boxes[i].style.pointerEvents = "none";
+        boxes[i].style.backgroundColor = 'gray';
+
+      }
     }
   });
 };
